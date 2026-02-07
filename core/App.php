@@ -7,8 +7,17 @@ class App
     public function run()
     {
         $request = Request::capture();
-        echo '<pre>';
-        print_r($request);
-        echo '</pre>';
+
+        $router = new Router();
+
+        $router->get("/", function () {
+            echo 'Home Page';
+        });
+
+        $router->get("/about", function () {
+            echo 'About Page';
+        });
+
+        $router->dispatch($request);
     }
 }
