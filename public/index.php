@@ -2,6 +2,8 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use Core\Test;
+use Core\App;
 
-Test::hello();
+$app = new App();
+
+$app->run();
