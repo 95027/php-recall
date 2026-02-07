@@ -1,0 +1,17 @@
+{
+  "name": "saikumar/php-recall",
+  "description": "This project is a core PHP recall",
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/",
+      "Core\\": "core/"
+    }
+  },
+  "authors": [
+    {
+      "name": "95027",
+      "email": "kumarchembeti26@gmail.com"
+    }
+  ],
+  "require": {}
+}
