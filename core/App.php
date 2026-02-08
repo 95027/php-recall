@@ -2,6 +2,8 @@
 
 namespace Core;
 
+use App\Controllers\HomeController;
+
 class App
 {
     public function run()
@@ -10,13 +12,9 @@ class App
 
         $router = new Router();
 
-        $router->get("/", function () {
-            echo 'Home Page';
-        });
+        $router->get("/", [HomeController::class, 'home']);
 
-        $router->get("/about", function () {
-            echo 'About Page';
-        });
+        $router->get("/about", [HomeController::class, 'about']);
 
         $router->dispatch($request);
     }

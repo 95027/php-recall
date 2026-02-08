@@ -7,7 +7,7 @@ class Router
 
     protected array $routes = [];
 
-    public function get(string $uri, callable $action)
+    public function get(string $uri, $action)
     {
         $this->routes['GET'][$uri] = $action;
     }
@@ -23,6 +23,15 @@ class Router
             return;
         }
 
-        call_user_func($this->routes[$method][$uri]);
+        $action = $this->routes[$method][$uri];
+
+        if (is_array($action)) {
+            [$class, $method] = $action;
+            $controller = new $class;
+            $controller->$method();
+            return;
+        }
+
+        call_user_func($action);
     }
 }
