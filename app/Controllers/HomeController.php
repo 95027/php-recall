@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use Core\Request;
+use Core\View;
 
 class HomeController
 {
@@ -15,7 +16,9 @@ class HomeController
 
     public function home()
     {
-        echo 'METHOD ' . $this->request->method();
+        // echo 'METHOD ' . $this->request->method();
+
+        echo View::render('home', ['name' => 'sai']);
     }
 
     public function about()
