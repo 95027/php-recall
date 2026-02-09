@@ -12,9 +12,7 @@ class App
 
         $router = new Router();
 
-        $router->get("/", [HomeController::class, 'home']);
-
-        $router->get("/about", [HomeController::class, 'about']);
+        require __DIR__ . '/../routes/web.php';
 
         $router->dispatch($request);
     }
