@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use Core\Request;
 use Core\Response;
+use Core\Session;
 use Core\View;
 
 class HomeController
@@ -21,7 +22,11 @@ class HomeController
 
         // Response::send(View::render('home', ['name' => 'sai']));
 
-        Response::json(["message" => "home"]);
+        $visits = Session::get('visits', 0);
+
+        Session::set('visits', $visits + 1);
+
+        Response::json(["visits" => $visits]);
     }
 
     public function about()
