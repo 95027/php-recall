@@ -2,6 +2,11 @@
 
 namespace App\Controllers;
 
+use App\Channels\EmailNotification;
+use App\channels\SmsNotification;
+use App\Managers\NotificationManager;
+use App\Resolvers\NotificationResolver;
+use App\Services\NotificationService;
 use Core\Request;
 use Core\Response;
 use Core\Session;
@@ -32,5 +37,14 @@ class HomeController
     public function about()
     {
         echo 'About Controller Page';
+    }
+
+    public function sendNotification()
+    {
+        $channel = NotificationManager::channel();
+        $service = new NotificationService($channel);
+
+
+        $service->notify("User registered");
     }
 }
